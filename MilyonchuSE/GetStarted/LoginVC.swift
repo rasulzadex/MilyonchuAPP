@@ -43,8 +43,13 @@ class LoginVC: UIViewController {
         let storyboard = UIStoryboard(name: "Body", bundle: nil)
         if let newRootVC = storyboard.instantiateViewController(withIdentifier: "StartVC") as? StartVC {
             let sceneDelegate = UIApplication.shared.connectedScenes.first!.delegate as! SceneDelegate
-            sceneDelegate.window?.rootViewController = newRootVC
-            sceneDelegate.window?.makeKeyAndVisible()
+            
+            
+            if let scene = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
+                scene.switchToMain()
+            }
+//            sceneDelegate.window?.rootViewController = newRootVC
+//            sceneDelegate.window?.makeKeyAndVisible()
         }
     }
 

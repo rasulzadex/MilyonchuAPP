@@ -2,7 +2,6 @@
 //  AnswerCollectionViewCell.swift
 //  BillionerProject
 //
-//  Created by Aslanli Faqan on 09.10.24.
 //
 
 import UIKit
@@ -10,10 +9,12 @@ import UIKit
 class AnswerCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var collection: UICollectionView!
     private var question: Question?
+    
+    var singleTouchIsEnabled = false
+    var resultList = [""]
     override func awakeFromNib() {
         super.awakeFromNib()
         configureCollection()
-        // Initialization code
     }
     
     fileprivate func configureCollection() {
@@ -21,8 +22,8 @@ class AnswerCollectionViewCell: UICollectionViewCell {
         collection.dataSource = self
         collection.register(UINib(nibName: "AnswerTitleCell", bundle: nil), forCellWithReuseIdentifier: "AnswerTitleCell")
         collection.register(UINib(nibName: "QuestionHeaderView", bundle: nil), forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "QuestionHeaderView")
-        
-    }
+        collection.layer.cornerRadius = 15
+        collection.backgroundColor = .clear    }
     
     func configureCell(model: Question) {
         question = model
@@ -52,15 +53,16 @@ extension AnswerCollectionViewCell: UICollectionViewDelegate,
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AnswerTitleCell", for: indexPath) as! AnswerTitleCell
         guard let answer = question?.answer[indexPath.row] else {return UICollectionViewCell()}
         cell.configureCell(model: answer)
+    
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return .init(width: collectionView.frame.width/2 - 24, height: collectionView.frame.height/4 - 12)
+        return .init(width: collectionView.frame.width/1 - 12, height: collectionView.frame.height/10 - 12)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return .init(width: collectionView.frame.width, height: collectionView.frame.height/3)
+        return .init(width: collectionView.frame.width/2-24, height: collectionView.frame.height/3-32)
     }
     func collectionView(
         _ collectionView: UICollectionView,
@@ -80,8 +82,56 @@ extension AnswerCollectionViewCell: UICollectionViewDelegate,
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let answer = question?.answer[indexPath.row] else {return}
-        print(#function, answer, indexPath.row)
+        guard !singleTouchIsEnabled else {return}
+        guard let cell = collectionView.cellForItem(at: indexPath) as? AnswerTitleCell,
+            let answer = question?.answer[indexPath.row] else {return}
+            cell.answerLabel.layer.borderColor = UIColor.gray.cgColor
+
+            
+
+        cell.layer.cornerRadius = 10
+
+        
+        
+        if let answer = question?.answer[indexPath.row] {
+
+                if answer.correct {
+                    cell.answerLabel.layer.borderColor = UIColor.appGreen.cgColor
+                    cell.answerLabel.backgroundColor = .answerGreen
+                    correctAnswersFunc()
+                } else {
+                    cell.answerLabel.layer.borderColor = UIColor.red.cgColor
+                    cell.answerLabel.backgroundColor = .answerRed
+
+                    
+
+                }
+            singleTouchIsEnabled = true
+          
+//                collection.backgroundColor = answer.correct ? UIColor.green.withAlphaComponent(0.2) : UIColor.red.withAlphaComponent(0.2)
+//            collection.layer.cornerRadius = 10.0
+//                collection.layer.borderWidth = 5
+//                collection.layer.borderColor = answer.correct ? UIColor.appGreen.cgColor : UIColor.red.cgColor
+            }
+      
+    
+            
+//
+//
+//        print(#function, answer, indexPath.row)
     }
+    
+    func correctAnswersFunc(){
+        var correctAnswers = 0
+
+        
+        correctAnswers += 1
+        print(correctAnswers)
+
+    }
+    
+
+
+    
 }
 

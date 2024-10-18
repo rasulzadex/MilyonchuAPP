@@ -7,32 +7,48 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "F8D53C7B-2B28-4C6F-BC34-756AEF87E7BB"
+            uuid = "76138C3B-D4B5-4DC6-856C-164F4D6BE5A2"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MilyonchuSE/Body/AnswerTItleCell/AnswerTitleCell.swift"
+            filePath = "MilyonchuSE/Body/StartVC.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "17"
-            endingLineNumber = "17"
-            landmarkName = "configureCell(model:)"
+            startingLineNumber = "52"
+            endingLineNumber = "52"
+            landmarkName = "startButtonTapped(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "76138C3B-D4B5-4DC6-856C-164F4D6BE5A2"
+            uuid = "1A466ADD-20ED-4733-B890-AD5C188E18EA"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "MilyonchuSE/Body/AnswerCollectionViewCell/AnswerCollectionViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "8"
+            endingLineNumber = "8"
+            landmarkName = "unknown"
+            landmarkType = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4F8D377C-4DDA-4887-A972-60754D9C3428"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "MilyonchuSE/Body/StartVC.swift"
+            filePath = "MilyonchuSE/Body/MainViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "23"
-            endingLineNumber = "23"
-            landmarkName = "startButtonTapped(_:)"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
+            landmarkName = "nextQuestionButtonTapped(_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

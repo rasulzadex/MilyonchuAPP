@@ -8,27 +8,52 @@
 import UIKit
 
 class StartVC: UIViewController {
+    
+    @IBOutlet private weak var quizView: UIView!
+    @IBOutlet private weak var quizLabel: UILabel!
+    @IBOutlet private weak var kheloLabel: UILabel!
+    @IBOutlet private weak var enterNameLabel: UILabel!
+    @IBOutlet private weak var enterNameTF: UITextField!
+
+
+
+
 
     @IBOutlet private weak var startButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+            adjustCorners()
 
-        // Do any additional setup after loading the view.
     }
     
+    
+    private func adjustCorners(){
+        quizView.layer.cornerRadius = 70
+        enterNameTF.layer.borderWidth = 1
+        enterNameTF.layer.cornerRadius = 15
+        enterNameTF.layer.borderColor = UIColor.white.cgColor
+        let textField = UITextField()
+        let placeholderText = "Javidan..."
+        let attributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor.white
+        ]
+        enterNameTF.attributedPlaceholder = NSAttributedString(string: placeholderText, attributes: attributes)
+
+        
+        startButton.layer.cornerRadius = 15
+        
+        
+        
+    }
 
     
     @IBAction func startButtonTapped(_ sender: UIButton) {
-        if navigationController == nil {
-            print("Navigation controller is nil")
-        } else {
+     
             print("Navigation controller is available")
-            let storyboard = UIStoryboard(name: "Body", bundle: nil)
-            if let questionsVC = storyboard.instantiateViewController(withIdentifier: "MainViewController") as? MainViewController {
-                navigationController?.pushViewController(questionsVC, animated: true)
-            }
-        }
+            let nextVC = storyboard?.instantiateViewController(withIdentifier: "MainViewController") as! MainViewController
+            navigationController?.pushViewController(nextVC, animated: true)
+        
     }
 
 
